@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="splash-header">
+        <div class="splash-header-content">
+            <div class="main-splash-header">
+                <div class="position-relative slide-up">
+                    <h1>Our Products</h1> 
+                    <h3>We provide a plethora of products for customers to enjoy.</h3>
+                </div>
+            </div>
+        </div> 
+    </div>
+
+    <div class="content-container remora">
+        <div class="container slideshow">
+            <div class="mySlides fadeIn">
+                <img src="{{ url_for('static', filename='img/remora1.jpg') }}">
+            </div>
+        
+            <div class="mySlides fadeIn">
+                <img src="{{ url_for('static', filename='img/remora2.jpg') }}">
+            </div>
+        
+            <div class="mySlides fadeIn">
+                <img src="{{ url_for('static', filename='img/remora3.jpg') }}">
+            </div>
+            <div class="mySlides fadeIn">
+                <img src="{{ url_for('static', filename='img/remora4.jpg') }}">
+            </div>
+        
+            <div class="mySlides fadeIn">
+                <img src="{{ url_for('static', filename='img/remora5.jpg') }}">
+            </div>
+        
+            <div class="mySlides fadeIn">
+                <img src="{{ url_for('static', filename='img/remora6.jpg') }}">
+            </div>
+            <!-- Next and previous buttons -->
+            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+            <a class="next" onclick="plusSlides(1)">&#10095;</a>
+        </div>
+        <div class="dotList">
+            <span class="dot" onclick="currentSlide(1)"></span>
+            <span class="dot" onclick="currentSlide(2)"></span>
+            <span class="dot" onclick="currentSlide(3)"></span>
+            <span class="dot" onclick="currentSlide(4)"></span>
+            <span class="dot" onclick="currentSlide(5)"></span>
+            <span class="dot" onclick="currentSlide(6)"></span>
+        </div>     
+    </div>
+
+    <div class="content-container no-padding">
+        <div class="container">
+            <p class="caddy-text"> Remora is an unconventional and innovative shower caddy that brings both convenience and 
+                utility. When using it, simply unfold at the hinge and connect the 2 suction cups onto the bathroom or 
+                shower wall for easy access to personal items. This keeps the shower caddy from collecting water and 
+                helps avoid direct contact with the unsanitary bathroom floor. Due to its compact size, 
+                Remora makes an ideal companion for traveling, not just showering, and can be utilized for 
+                a variety of situations and locations. Dividers can be provided to allow the consumer to 
+                sectionalize their caddy in a customizable manner.
+            </p>
+        </div>
+        <div class="container purchase">
+            <button class="button is-primary btn-lg" id="submitBtn">Purchase!</button>
+        </div>
+    </div>
+{% endblock %}
