@@ -13,7 +13,6 @@ class RealMessage(db.Model):
     newsletter = db.Column(db.Boolean(1), nullable=False)
 
 class EmailList(db.Model):
-    __tablename__ = 'EmailList'
     id = db.Column(db.Integer, primary_key=True)
     first_name = db.Column(db.String(20), nullable=False)
     last_name = db.Column(db.String(20), nullable=False)
