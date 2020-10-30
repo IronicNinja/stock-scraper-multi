@@ -102,7 +102,7 @@ def create_checkout_session():
 
 @app.route("/success")
 def success():
-    flash('Thank you for purchasing our product! Your product will arrive shortly. If you have any questions, feel free to Contact Us!', 'success')
+    flash('Thank you for purchasing our product! Your product will arrive shortly. If you have any questions, feel free to contact us!', 'success')
     return render_template('products.html', title='Products')
 
 
