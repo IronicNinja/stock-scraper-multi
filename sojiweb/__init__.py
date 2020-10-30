@@ -4,6 +4,7 @@ from flask_bcrypt import Bcrypt
 from flask_mail import Mail
 import os
 from .models import RealMessage, EmailList
+from flask.cli import with_appcontext
 
 app = Flask(__name__)
 app.config.from_pyfile('config.py')
