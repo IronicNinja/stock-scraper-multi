@@ -5,7 +5,12 @@ from flask_mail import Mail
 import os
 
 app = Flask(__name__)
-app.config.from_pyfile('config.py')
+dev = False
+
+if dev:
+    app.config.from_pyfile('local_config.py')
+else:
+    app.config.from_pyfile('config.py')
 
 #protect against malicious attacks
 db = SQLAlchemy(app)

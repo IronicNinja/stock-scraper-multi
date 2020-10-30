@@ -1,4 +1,4 @@
-from sojiweb import app
+from sojiweb import app, dev
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=dev)

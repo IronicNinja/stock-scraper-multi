@@ -1,16 +1,21 @@
 from flask import render_template, url_for, jsonify, flash, redirect, request
-from sojiweb import app, db, mail
+from sojiweb import app, db, mail, dev
 from sojiweb.models import RealMessage, EmailList
 from sojiweb.forms import ContactForm, NewsletterForm
 from flask_mail import Message
 import stripe
 import os
 
+if dev:
+    from sojiweb.local_config import STRIPE_PUBLISHABLE_KEY, STRIPE_SECRET_KEY
+else:
+    from sojiweb.config import STRIPE_PUBLISHABLE_KEY, STRIPE_SECRET_KEY
+
 # pylint: skip-file
 
 stripe_keys = {
-    "secret_key": os.environ.get("STRIPE_SECRET_KEY"),
-    "publishable_key": os.environ.get("STRIPE_PUBLISHABLE_KEY")
+    "secret_key": STRIPE_SECRET_KEY,
+    "publishable_key": STRIPE_PUBLISHABLE_KEY
 }
 
 @app.route("/", methods=['GET', 'POST'])
@@ -94,3 +99,12 @@ def create_checkout_session():
         return jsonify({"sessionId": checkout_session["id"]})
     except Exception as e:
         return jsonify(error=str(e)), 403
+
+@app.route("/success")
+def success():
+    return render_template("success.html")
+
+
+@app.route("/cancelled")
+def cancelled():
+    return render_template("cancelled.html")

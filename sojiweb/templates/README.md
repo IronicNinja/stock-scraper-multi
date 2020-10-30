@@ -1,1 +1,0 @@
-# NCSSM CS Club Website
