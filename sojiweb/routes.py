@@ -102,9 +102,11 @@ def create_checkout_session():
 
 @app.route("/success")
 def success():
-    return render_template("success.html")
+    flash('Thank you for purchasing our product! Your product will arrive shortly. If you have any questions, feel free to Contact Us!', 'success')
+    return render_template('products.html', title='Products')
 
 
 @app.route("/cancelled")
 def cancelled():
-    return render_template("cancelled.html")
+    flash('Payment Cancelled. Please try again.', 'danger')
+    return render_template('products.html', title='Products')

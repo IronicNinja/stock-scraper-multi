@@ -6,6 +6,15 @@
                 <div class="position-relative slide-up">
                     <h1>Our Products</h1> 
                     <h3>We provide a plethora of products for customers to enjoy.</h3>
+                    {% with messages = get_flashed_messages(with_categories=true) %}
+                        {% if messages %}
+                            {% for category, message in messages %}
+                                <div class="alert alert-{{ category }}">
+                                    {{ message }}
+                                </div>
+                            {% endfor %}
+                        {% endif %}
+                    {% endwith %}
                 </div>
             </div>
         </div> 
@@ -64,4 +73,7 @@
             <button class="button is-primary btn-lg" id="submitBtn">Purchase!</button>
         </div>
     </div>
+
+    <script type="text/javascript" src="{{ url_for('static', filename='js/slideshow.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/stripe.js') }}"></script>
 {% endblock %}
