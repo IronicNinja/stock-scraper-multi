@@ -3,8 +3,7 @@ from stocks import app
 from stocks.forms import InputForm
 import os
 from stocks.yahoo import get_stocks
-from zipfile import ZipFile
-from os.path import basename
+from werkzeug.utils import secure_filename
 
 # pylint: skip-file
 
@@ -18,11 +17,15 @@ def home():
         last_date = form.date_end.data
         get_stocks(stock_data, first_date, last_date)
         flash('Successful!', 'success')
-
-        return send_file('sampleDir.zip',
-                attachment_filename= 'downloads.zip',
-                as_attachment = True, cache_timeout=-1)
+        redirect(url_for('home'))
     else:
         flash('Unsuccessful please try again', 'danger')
         redirect(url_for('home'))
     return render_template('home.html', title='Home', form=form)
+
+@app.route("/downloads", methods=['GET', 'POST'])
+def downloads():
+    if request.method == 'POST':
+        return send_from_directory('sampleDir.zip',
+                attachment_filename='downloads.zip',
+                as_attachment=True, cache_timeout=-1)
