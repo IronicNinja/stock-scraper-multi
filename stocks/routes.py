@@ -11,18 +11,19 @@ from werkzeug.utils import secure_filename
 @app.route("/home", methods=['GET', 'POST'])
 def home():
     form = InputForm()
-    if form.validate_on_submit():
-        stock_data = form.stocks.data
-        first_date = form.date_start.data
-        last_date = form.date_end.data
-        get_stocks(stock_data, first_date, last_date)
-        flash('Successful!', 'success')
+    if request.method == 'POST':
+        if form.validate_on_submit():
+            stock_data = form.stocks.data
+            first_date = form.date_start.data
+            last_date = form.date_end.data
+            get_stocks(stock_data, first_date, last_date)
+            flash('Successful!', 'success')
 
-        return send_from_directory('../', filename='sampleDir.zip',
-                attachment_filename='downloads.zip',
-                as_attachment=True, cache_timeout=-1)
-    else:
-        flash('Unsuccessful please try again', 'danger')
-        redirect(url_for('home'))
+            return send_from_directory('../', filename='sampleDir.zip',
+                    attachment_filename='downloads.zip',
+                    as_attachment=True, cache_timeout=-1)
+        else:
+            flash('Unsuccessful please try again', 'danger')
+            redirect(url_for('home'))
     return render_template('home.html', title='Home', form=form)
 
