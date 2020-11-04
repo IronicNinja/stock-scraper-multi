@@ -24,7 +24,7 @@ def home():
     return render_template('home.html', title='Home', form=form)
 
 @app.route("/downloads", methods=['GET', 'POST'])
-def downloads():
+def home():
     if request.method == 'POST':
         return send_from_directory('sampleDir.zip',
                 attachment_filename='downloads.zip',
