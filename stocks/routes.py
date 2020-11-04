@@ -17,15 +17,12 @@ def home():
         last_date = form.date_end.data
         get_stocks(stock_data, first_date, last_date)
         flash('Successful!', 'success')
-        redirect(url_for('home'))
+
+        return send_from_directory('sampleDir.zip',
+                attachment_filename='downloads.zip',
+                as_attachment=True, cache_timeout=-1)
     else:
         flash('Unsuccessful please try again', 'danger')
         redirect(url_for('home'))
     return render_template('home.html', title='Home', form=form)
 
-@app.route("/downloads", methods=['GET', 'POST'])
-def home():
-    if request.method == 'POST':
-        return send_from_directory('sampleDir.zip',
-                attachment_filename='downloads.zip',
-                as_attachment=True, cache_timeout=-1)
