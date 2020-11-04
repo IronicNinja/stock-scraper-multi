@@ -15,8 +15,7 @@ def get_stocks(stock, start_dt, end_dt):
         raise Exception("Start date is after end date.")
     """
     stock_list = stock.split(',')
-    random_int = str(random.randint(1000, 9999))
-    with ZipFile('sampleDir%s.zip' % random_int, 'w') as zipObj:
+    with ZipFile('sampleDir.zip', 'w') as zipObj:
         for stocks in stock_list:
             stocks = stocks.replace(" ", "")
             df = pdr.data.get_data_yahoo(stocks, start=start_dt, end=end_dt)
@@ -27,5 +26,5 @@ def get_stocks(stock, start_dt, end_dt):
         for stocks in stock_list:
             stocks = stocks.replace(" ", "")
             os.remove('%s.csv' % stocks)
-            
+
     return random_int
