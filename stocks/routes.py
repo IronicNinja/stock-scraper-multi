@@ -19,19 +19,7 @@ def home():
         get_stocks(stock_data, first_date, last_date)
         flash('Successful!', 'success')
 
-        dirName = r"C:\Users\evanz\Desktop\stock_scraper\stocks\downloads"
-        with ZipFile('sampleDir.zip', 'w') as zipObj:
-        # Iterate over all the files in directory
-            for folderName, subfolders, filenames in os.walk(dirName):
-                for filename in filenames:
-                    #create complete filepath of file in directory
-                    filePath = os.path.join(folderName, filename)
-                    # Add file to zip
-                    zipObj.write(filePath, basename(filePath))
-                    os.remove(filename)
-
-        path = r"C:\Users\evanz\Desktop\stock_scraper\sampleDir.zip"
-        return send_file(path,
+        return send_file(sampleDir.zip,
                 attachment_filename= 'downloads.zip',
                 as_attachment = True, cache_timeout=-1)
     else:

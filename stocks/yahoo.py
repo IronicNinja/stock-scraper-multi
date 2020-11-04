@@ -3,6 +3,8 @@ import numpy as np
 import pandas as pd
 import pandas_datareader as pdr
 import os
+from zipfile import ZipFile
+from os.path import basename
 
 def get_stocks(stock, start_dt, end_dt): 
     """
@@ -12,8 +14,18 @@ def get_stocks(stock, start_dt, end_dt):
     """
     stock_list = stock.split(',')
 
+    with ZipFile('sampleDir.zip', 'w') as zipObj:
+        for stocks in stock_list:
+            stocks = stocks.replace(" ", "")
+            df = pdr.data.get_data_yahoo(stocks, start=start_dt, end=end_dt)
+            #path = r'C:\Users\evanz\Desktop\stock_scraper\stocks\downloads'
+            #df.to_csv(os.path.join(path, r'%s.csv' % stocks))
+            #zipObj.write(path, basename(filePath))
+            df.to_csv('%s.csv' % stocks)
+            zipObj.write('%s.csv' % stocks)
+
     for stocks in stock_list:
         stocks = stocks.replace(" ", "")
-        df = pdr.data.get_data_yahoo(stocks, start=start_dt, end=end_dt)
-        path = r'C:\Users\evanz\Desktop\stock_scraper\stocks\downloads'
-        df.to_csv(os.path.join(path, r'%s.csv' % stocks))
+        os.remove('%s.csv' % stocks)
+
+get_stocks('FB, GOOG', '2020-01-05', '2020-01-20')
