@@ -27,6 +27,3 @@ $(document).ready(function() {
     return !(rect.bottom < 0 || rect.top - viewHeight >= 0);
   }
 });
-
-
-
