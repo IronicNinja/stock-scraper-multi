@@ -26,5 +26,3 @@ def get_stocks(stock, start_dt, end_dt):
         for stocks in stock_list:
             stocks = stocks.replace(" ", "")
             os.remove('%s.csv' % stocks)
-
-    return random_int
