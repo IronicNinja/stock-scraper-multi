@@ -8,7 +8,6 @@ from werkzeug.utils import secure_filename
 # pylint: skip-file
 
 @app.route("/", methods=['GET', 'POST'])
-@app.route("/home", methods=['GET', 'POST'])
 def home():
     form = InputForm()
     if request.method == 'POST':
@@ -17,13 +16,15 @@ def home():
             first_date = form.date_start.data
             last_date = form.date_end.data
             get_stocks(stock_data, first_date, last_date)
-            flash('Successful!', 'success')
-
-            return send_from_directory('../', filename='sampleDir.zip',
-                    attachment_filename='downloads.zip',
-                    as_attachment=True, cache_timeout=-1)
+            return redirect(url_for('home'))
         else:
             flash('Unsuccessful please try again', 'danger')
-            redirect(url_for('home'))
+            return redirect(url_for('home'))
     return render_template('home.html', title='Home', form=form)
 
+@app.route("/downloadingnow", methods=['GET', 'POST'])
+def home():
+    if request.method == 'POST':
+        return send_from_directory('../', filename='sampleDir.zip',
+                    attachment_filename='downloads.zip',
+                    as_attachment=True, cache_timeout=-1)
