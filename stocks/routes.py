@@ -19,7 +19,7 @@ def home():
         get_stocks(stock_data, first_date, last_date)
         flash('Successful!', 'success')
 
-        return send_file(sampleDir.zip,
+        return send_file('sampleDir.zip',
                 attachment_filename= 'downloads.zip',
                 as_attachment = True, cache_timeout=-1)
     else:
