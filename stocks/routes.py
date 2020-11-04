@@ -1,4 +1,4 @@
-from flask import render_template, url_for, jsonify, flash, redirect, request, send_file
+from flask import render_template, url_for, jsonify, flash, redirect, request, send_file, send_from_directory
 from stocks import app
 from stocks.forms import InputForm
 import os
@@ -18,7 +18,7 @@ def home():
         get_stocks(stock_data, first_date, last_date)
         flash('Successful!', 'success')
 
-        return send_from_directory('sampleDir.zip',
+        return send_from_directory('../', filename='sampleDir.zip',
                 attachment_filename='downloads.zip',
                 as_attachment=True, cache_timeout=-1)
     else:
