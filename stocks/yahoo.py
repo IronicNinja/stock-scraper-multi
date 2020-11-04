@@ -2,9 +2,7 @@ from datetime import datetime
 import numpy as np
 import pandas as pd
 import pandas_datareader as pdr
-import matplotlib.pyplot as plt
 import os
-
 
 def get_stocks(stock, start_dt, end_dt): 
     """
