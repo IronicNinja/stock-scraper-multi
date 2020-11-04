@@ -7,6 +7,7 @@ from werkzeug.utils import secure_filename
 
 # pylint: skip-file
 
+random_int = ''
 @app.route("/", methods=['GET', 'POST'])
 def home():
     form = InputForm()
@@ -15,7 +16,7 @@ def home():
             stock_data = form.stocks.data
             first_date = form.date_start.data
             last_date = form.date_end.data
-            get_stocks(stock_data, first_date, last_date)
+            random_int = get_stocks(stock_data, first_date, last_date)
             flash('Great!', 'success')
             return redirect(url_for('home'))
         else:
@@ -25,6 +26,6 @@ def home():
 
 @app.route("/downloading", methods=['GET', 'POST'])
 def downloading():
-    return send_from_directory('../', filename='sampleDir.zip',
+    return send_from_directory('../', filename='sampleDir%s.zip' % random_int,
                     attachment_filename='downloads.zip',
                     as_attachment=True, cache_timeout=-1)

@@ -6,6 +6,7 @@ import os
 from zipfile import ZipFile
 from stocks import dev
 from flask import Flask
+import random
 
 def get_stocks(stock, start_dt, end_dt): 
     """
@@ -14,8 +15,8 @@ def get_stocks(stock, start_dt, end_dt):
         raise Exception("Start date is after end date.")
     """
     stock_list = stock.split(',')
-
-    with ZipFile('sampleDir.zip', 'w') as zipObj:
+    random_int = str(random.randint(1000, 9999))
+    with ZipFile('sampleDir%s.zip' % random_int, 'w') as zipObj:
         for stocks in stock_list:
             stocks = stocks.replace(" ", "")
             df = pdr.data.get_data_yahoo(stocks, start=start_dt, end=end_dt)
@@ -29,6 +30,6 @@ def get_stocks(stock, start_dt, end_dt):
         for stocks in stock_list:
             stocks = stocks.replace(" ", "")
             os.remove('%s.csv' % stocks)
-
+    return random_int
 
 get_stocks('FB, GOOG', '2020-01-05', '2020-01-20')
