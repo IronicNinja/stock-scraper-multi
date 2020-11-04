@@ -5,6 +5,7 @@ import pandas_datareader as pdr
 import os
 from zipfile import ZipFile
 from os.path import basename
+from stocks import dev
 
 def get_stocks(stock, start_dt, end_dt): 
     """
@@ -23,9 +24,9 @@ def get_stocks(stock, start_dt, end_dt):
             #zipObj.write(path, basename(filePath))
             df.to_csv('%s.csv' % stocks)
             zipObj.write('%s.csv' % stocks)
-
-    for stocks in stock_list:
-        stocks = stocks.replace(" ", "")
-        os.remove('%s.csv' % stocks)
+    if dev:
+        for stocks in stock_list:
+            stocks = stocks.replace(" ", "")
+            os.remove('%s.csv' % stocks)
 
 get_stocks('FB, GOOG', '2020-01-05', '2020-01-20')
