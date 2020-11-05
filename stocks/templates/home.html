@@ -93,14 +93,39 @@
         <div class="content-container offers">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-md-12 slide-up">
                         <h2> How do you use this tool? </h2>
-                    </div>
-                    <div class="col-md-12">
-                        <p>First, input the abbreviated version of the stocks you want downloaded. The stocks MUST
-                            be spelled correctly! Then add the start date and end date in the format year-month-date,
-                            e.g. 2015-01-13. Click submit to create a zipped folder of all the stocks, and then download
-                            all to download the zipped folder onto your computer!
+                        <p>1. Input a list of stocks (abbreviated form) that you want downloaded, e.g. GOOG, FB, AAPL.
+                            You <b>MUST</b> use the correctly spelled abbreviation.
+                        </p>
+                        <p>
+                            2. Add the start date and end date in the format year-month-date, e.g. 2015-01-13 or 2018-11-02.
+                        </p>
+                        <p>
+                            3. Click Submit. 
+                            If you inputted the date in an incorrect format or the start date after the end date, you
+                            will get an error message. 
+                            If you input incorrectly spelled stocks, there will be an error message telling you
+                            which stocks were not found. You may still download the zip folder as it will consist of all of the correctly
+                            spelled stocks. 
+                            If everything is inputted correctly, you should receive a confirmation message. 
+                        </p>
+                        <p>
+                            4. Click Download All. This should create a zipped folder called "stocks.zip" which contains all your stocks in csv format!
+                        </p>
+                        <br>
+                        <p> 
+                            <b>Please note: </b> if your start date is before a company's initial public offering, you will receive data that starts
+                            from the company's IPO. Be careful because this can cause mismatches in the lengths of your csv files. The program should
+                            be able to catch if your state date is before the company's IPO; however, in rare circumstances (where your start date
+                            is within a week of the IPO), it may not be able to do so. I would suggest checking the length of each csv with
+                            a program before using them.
+                        </p>
+                        <br>
+                        <p>
+                            If you have any other questions or encounter issues, please email me at <a href="mailto:zhang21evan@ncssm.edu">zhang21evan@ncssm.edu</a>. 
+                            <br>If you would like to support me, please check out my <a href="https://github.com/IronicNinja">Github Account</a>.    
+                            <br>The code for this project is <a href="https://github.com/IronicNinja/stock-scraper-multi"> open source here</a>.             
                         </p>
                     </div>
                 </div>

@@ -66,10 +66,10 @@ body, html {
 
 .slide-up {
     opacity: 0;
-    -moz-transition: all 750ms ease-out;
-    -webkit-transition: all 750ms ease-out;
-    -o-transition: all 750ms ease-out;
-    transition: all 750ms ease-out;
+    -moz-transition: all 2000ms ease-out;
+    -webkit-transition: all 2000ms ease-out;
+    -o-transition: all 2000ms ease-out;
+    transition: all 2000ms ease-out;
     transform: translateY(100px);
     -webkit-backface-visibility: hidden;
     -moz-backface-visibility: hidden;

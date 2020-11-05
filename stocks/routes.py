@@ -3,7 +3,6 @@ from stocks import app
 from stocks.forms import InputForm
 import os
 from stocks.yahoo import get_stocks
-from werkzeug.utils import secure_filename
 import random
 
 # pylint: skip-file
@@ -17,12 +16,21 @@ def home():
             stock_data = form.stocks.data
             first_date = form.date_start.data
             last_date = form.date_end.data
-            DNE_list = get_stocks(stock_data, first_date, last_date, session.get('p_id'))
-            if not DNE_list:
+            DNE_list, before_list = get_stocks(stock_data, first_date, last_date, session.get('p_id'))
+            if DNE_list == "Error":
+                flash('Your start date was after the end date. Please try again.', 'danger')
+            elif not DNE_list and not before_list:
                 flash('All stocks were downloaded! Click Download All to download your stocks.', 'success')
-            else:
+            elif DNE_list and not before_list:
                 s = ', '.join(DNE_list)
                 flash('The following stocks were undownloadable: %s' % s, 'danger')
+            elif not DNE_list and before_list:
+                s = ', '.join(before_list)
+                flash("Your start date was before these companies' IPOs: %s. They are still downloaded but beware of length mismatches." % s, 'danger')
+            else:
+                s1 = ', '.join(DNE_list)
+                s2 = ', '.join(before_list)
+                flash("The following stocks were undownloadable: %s; Your start date was before these companies' IPOs: %s. They are still downloaded but beware of length mismatches" % (s1, s2), 'danger')
             return redirect(url_for('home'))
         else:
             flash('Unsuccessful, please try again.', 'danger')
