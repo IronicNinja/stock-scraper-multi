@@ -3,7 +3,7 @@ from flask_session import Session
 import os
 
 app = Flask(__name__)
-dev = False
+dev = True
 
 app.config.from_pyfile('config.py')
 
