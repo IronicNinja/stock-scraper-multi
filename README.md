@@ -1,5 +1,7 @@
 # Stock Scraping Tool
 
+https://stock-scraper-multi.herokuapp.com/
+
 **Instructions for Use**
 1. Input a list of stocks (abbreviated form) that you want downloaded, e.g. GOOG, FB, AAPL. You MUST use the correctly spelled abbreviation. The more stocks you have and the larger the time range, the longer it will take for the program to compile the files.
 
