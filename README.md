@@ -2,7 +2,7 @@
 
 https://stock-scraper-multi.herokuapp.com/
 
-**Instructions for Use**
+### Instructions for Use
 1. Input a list of stocks (abbreviated form) that you want downloaded, e.g. GOOG, FB, AAPL. You MUST use the correctly spelled abbreviation. The more stocks you have and the larger the time range, the longer it will take for the program to compile the files.
 
 2. Add the start date and end date in the format year-month-date, e.g. 2015-01-13 or 2018-11-02.
