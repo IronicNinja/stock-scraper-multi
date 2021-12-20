@@ -4,7 +4,6 @@ import pandas as pd
 import pandas_datareader as pdr
 import os
 from zipfile import ZipFile
-from stocks import dev
 
 def get_stocks(stock, start_dt, end_dt, id): 
     DNE_list = []
