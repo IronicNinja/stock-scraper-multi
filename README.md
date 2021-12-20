@@ -1,5 +1,7 @@
 # Stock Scraping Tool
 
+NOTE that since Pandas Datareader no longer reads stocks from Yahoo, this tool is unfortunately deprecated.
+
 https://stock-scraper-multi.herokuapp.com/
 
 ### Instructions for Use
